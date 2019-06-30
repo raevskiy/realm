@@ -59,6 +59,7 @@ public class RealmApplicationIntegrationTests {
         assertThat(foundRealm.getName(), is(createdRealm.getName()));
         assertThat(foundRealm.getDescription(), is(createdRealm.getDescription()));
         assertThat(foundRealm.getKey(), is(createdRealm.getKey()));
+        assertThat(response.getStatusCode(), is(HttpStatus.OK));
     }
     
     @Test
