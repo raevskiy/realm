@@ -11,10 +11,10 @@ public class HttpHeadersFactory {
 		MediaType mediaType = MediaType.parseMediaTypes(mediaTypes).stream().findFirst().orElse(APPLICATION_XML);
 		return createHeadersWithContentType(mediaType);
 	}
-	
+
 	public static HttpHeaders createHeadersWithContentType(MediaType mediaType) {
 		HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(ALL.equals(mediaType) ? APPLICATION_XML : mediaType);
-	    return headers;
+		headers.setContentType(ALL.equals(mediaType) ? APPLICATION_XML : mediaType);
+		return headers;
 	}
 }

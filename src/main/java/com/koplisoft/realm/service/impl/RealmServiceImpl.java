@@ -20,7 +20,7 @@ public class RealmServiceImpl implements RealmService {
 		if (realmDao.findByName(name).isPresent()) {
 			return Optional.empty();
 		}
-		
+
 		String key = RandomStringUtils.random(32, true, true);
 		Realm realm = new Realm(name, key);
 		realm.setDescription(description);

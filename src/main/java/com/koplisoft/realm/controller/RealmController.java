@@ -59,10 +59,7 @@ public class RealmController {
 	ResponseEntity<ApiError> handleApiException(HttpServletRequest req, ApiException e) {
 		ApiError apiError = new ApiError();
 		apiError.setCode(e.getMessage());
-		return new ResponseEntity<>(
-				apiError,
-				createHeadersWithContentType(req.getContentType()),
-				e.getHttpStatus());
+		return new ResponseEntity<>(apiError, createHeadersWithContentType(req.getContentType()), e.getHttpStatus());
 	}
 
 }
