@@ -3,12 +3,16 @@ package com.koplisoft.realm.controller;
 import static org.springframework.http.MediaType.ALL;
 import static org.springframework.http.MediaType.APPLICATION_XML;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
 public class HttpHeadersFactory {
-	public static HttpHeaders createHeadersWithContentType(String mediaTypes) {
-		MediaType mediaType = MediaType.parseMediaTypes(mediaTypes).stream().findFirst().orElse(APPLICATION_XML);
+	public static HttpHeaders createHeadersWithContentType(HttpServletRequest request) {
+		String contentType = HttpMethod.GET.name().equals(request.getMethod()) ? request.getHeader("Accept") : request.getContentType();
+		MediaType mediaType = MediaType.parseMediaTypes(contentType).stream().findFirst().orElse(APPLICATION_XML);
 		return createHeadersWithContentType(mediaType);
 	}
 
